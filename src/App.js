@@ -1,23 +1,20 @@
-import logo from './logo.svg';
+import Movie from './components/Movie/Movie';
 import './App.css';
+import Title from './components/Title';
+//https://www.themoviedb.org/
+const filmData =
+{
+  id: '0001',
+  name: 'Riverdale',
+  posterUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/wRbjVBdDo5qHAEOVYoMWpM58FSA.jpg',
+  description: 'Set in the present, the series offers a bold, subversive take on Archie, Betty, Veronica and their friends, exploring the surreality of small-town life, the darkness and weirdness bubbling beneath Riverdale’s wholesome facade.'
+};
 
-function App() {
-  return (
+function App(props) {
+  return (  
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Title titleText={'Main title'}/>
+      <Movie data = {filmData} />
     </div>
   );
 }
