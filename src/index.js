@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-const data = '123wqfwargw evgr ew4567';
+import stabData from './stab';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App data={data}/>
+    <App data={stabData}/>
   </React.StrictMode>,
   document.getElementById('root')
 );
