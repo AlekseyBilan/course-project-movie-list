@@ -1,7 +1,7 @@
+import React from 'react';
 
 function Title(props) {
-    console.log(props);
-    const {titleText} = props; //{title-text:'sth'}
+    const {titleText} = props;
     return (
       <h2 className="Title">
         {titleText}
@@ -9,4 +9,4 @@ function Title(props) {
     );
   }
   
-  export default Title;
+export default Title;

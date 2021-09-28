@@ -3,22 +3,6 @@ const stabData = {
   "results": [
     {
       "adult": false,
-      "backdrop_path": "/xySCWwZVuU03xOsJfs1Qk8yG2DF.jpg",
-      "genre_ids": [18, 10749],
-      "id": 226979,
-      "original_language": "en",
-      "original_title": "Test",
-      "overview": "San Francisco, 1985. Two opposites attract at a modern dance company. Together, their courage and resilience are tested as they navigate a world full of risks and promise, against the backdrop of a disease no one seems to know anything about.",
-      "popularity": 5.392,
-      "poster_path": "/tTWRomgIMOoIB3CJLPlVbqSawEm.jpg",
-      "release_date": "2013-06-29",
-      "title": "Test",
-      "video": false,
-      "vote_average": 6.6,
-      "vote_count": 107
-    },
-    {
-      "adult": false,
       "backdrop_path": "/rG2jdLdj4U55MgI3g9f85w2th1y.jpg",
       "genre_ids": [28, 878, 53],
       "id": 401123,

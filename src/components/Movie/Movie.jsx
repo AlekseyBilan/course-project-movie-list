@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link} from 'react-router-dom';
 
 function Movie({movie}) {
+  let title = movie.title.replace(/ /g, '-')
   return(
-      <section className="movie-list" data-id={movie.id}>
+    <section className="movie-list" data-id={movie.id}>
           <div className="image-wrapper">
             <img 
                 className="movie-icon" 
-                //w94_and_h141_bestv2
-                //https://image.tmdb.org/t/p/w94_and_h141_bestv2/biRxGAHSPNdJwJB7l5796pDtVph.jpg
                 src={'https://image.tmdb.org/t/p/w500'+movie.poster_path}
                 alt={movie.title}
             />
@@ -19,6 +19,9 @@ function Movie({movie}) {
                   {movie.overview}
               </span>
           </div>
+          <a target="_blank" href={'https://www.themoviedb.org/movie/'+ movie.id +'-'+ title } rel="noreferrer">go to A</a>
+          <br/>
+          <Link to={{ pathname: 'https://www.themoviedb.org/movie/'+ movie.id +'-'+ title }} target="_blank">go to { movie.title}</Link>
       </section>
   )
 }
