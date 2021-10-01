@@ -24,10 +24,10 @@ class Checkbox extends React.Component {
             <label>
                 {text}
                 <input 
-                    type="checkbox" 
+                    type="checkbox"
                     checked={this.state.isActive}
-                    onClick={this.onClickHendler.bind(this)
-                }/>
+                    onClick={this.onClickHendler.bind(this)}
+                />
             </label>
         )
     }
