@@ -3,9 +3,10 @@ import React, {Component} from 'react';
 import Title from './components/Title/Title';
 import MovieList from './components/MovieList/MovieList';
 import Checkbox from './components/Checkbox/Checkbox';
+import Checkbox2 from './components/Checkbox/Checkbox2';
 import { Switch, Route, BrowserRouter as Router, Link } from 'react-router-dom';
 import NotFound from './components/NotFound/NotFound';
-import Test from './components/Test';
+import UseState from './components/Hooks/UseState';
 import Search from './components/Search/Search';
 import {apiKey, getMoviesUrl, language} from './AppSettings';
 
@@ -13,50 +14,58 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        searchResults: null,
+        isLoaded: null,
+        items: null,
+        isChecked: true,
     };
   }
 
-  checkedHandler = (state) => {
-    console.log('I am checkedHandler from App', state);
-  }
-
-  getData = (searchQuery) => {
-    return async () => {
-      const result = await fetch(`${getMoviesUrl}?api_key=${apiKey}&language=${language}&query=${searchQuery}`);
-      const movies = await result.json();
-      console.log('M = ', movies);
-      return movies;
-    };
+  checkedHandler = (checkBoxState) => {
+    console.log('checkBoxState = ', checkBoxState);
+    this.setState((state)=>({isChecked: !state.isChecked}))
   }
 
   searchHandler = (searchQuery) => {
-    console.log('1 URL = ', `${getMoviesUrl}?api_key=${apiKey}&language=${language}&query=${searchQuery}`)
-    
-    console.log('I am checkedHandler from App', searchQuery);
-
-    this.setState( () => {
-      searchResults: this.getData(searchQuery)
-    }
-  )
+    fetch(`${getMoviesUrl}?api_key=${apiKey}&language=${language}&query=${searchQuery}`)
+    .then(res => res.json())
+    .then(
+      (result) => {
+        console.log('result = ', result);
+        this.setState({
+          isLoaded: true,
+          items: result
+        });
+      },
+      (error) => {
+        this.setState({
+          isLoaded: true,
+          error
+        });
+      }
+    )
   }
 
   render() {
+    console.log('App rendered');
     return (  
       <Router>
         <Switch>
           <Route path='/search'>
             <Search searchHandler={this.searchHandler}/>
           </Route>
-          <Route path='/home'>
-            <MovieList props={this.props}/>
+          <Route path='/checkbox2'>
+            <Checkbox2 onChangeHendler={this.checkedHandler} isChecked={this.state.isChecked}/>
           </Route>
-          <Route path='/test'>
-            <Test/>
+          <Route path='/home'>
+          <Search searchHandler={this.searchHandler}/>
+            <MovieList props={this.state.items}/>
+          </Route>
+          <Route path='/hooks'>
+            <UseState/>
           </Route>
           <Route path='/checkbox'>
             <Title titleText={'Welcome on Checbox example'} />
-            <Checkbox checkedHandler={this.checkedHandler}/>
+            <Checkbox checkedHandler={this.checkedHandler} isChecked />
             <Link to='/home'>go home</Link>
           </Route>        
           <Route path='/'>

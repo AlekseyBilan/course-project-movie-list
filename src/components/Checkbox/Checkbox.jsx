@@ -1,36 +1,28 @@
-import React from "react";
+import React, {useState} from "react";
 
-class Checkbox extends React.Component {
-    constructor(props) {
-        super(props);
+function Checkbox(props) {
+    const [state, setState ] = useState(props.isChecked);
 
-        this.state = {
-            isActive: this.props.isActive,
-        };
-    }
-
-    onClickHendler = () => {
-        this.setState(function (state){
-            if(!state.isActive) {
-                this.props.checkedHandler(!state.isActive);
+    const onChangeHendler = () => {
+        setState(function (state){
+            if(!state) {
+                props.checkedHandler(!state);
             }
-            return {isActive : !state.isActive}
+            return !state
         })
     }
-
-    render () {
-        const text = this.state.isActive ? 'On' : 'Of'
+        const text = state ? 'On' : 'Of'
         return (
             <label>
                 {text}
                 <input 
                     type="checkbox"
-                    checked={this.state.isActive}
-                    onClick={this.onClickHendler.bind(this)}
+                    checked={state}
+                    onChange={onChangeHendler}
                 />
             </label>
         )
-    }
+    
 }
 
 export default Checkbox;
