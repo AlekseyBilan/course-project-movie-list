@@ -1,5 +1,5 @@
 import './App.css';
-import React, {Component} from 'react';
+import * as React from 'react';
 import Title from './components/Title/Title';
 import MovieList from './components/MovieList/MovieList';
 import Checkbox from './components/Checkbox/Checkbox';
@@ -10,22 +10,33 @@ import UseState from './components/Hooks/UseState';
 import Search from './components/Search/Search';
 import {apiKey, getMoviesUrl, language} from './AppSettings';
 
-class App extends Component {
-  constructor(props) {
+interface IProps {
+}
+
+interface IState {
+  isLoaded: boolean,
+  items: any,
+  isChecked: boolean,
+  error: any
+}
+
+class App extends React.Component<IProps, IState> {
+  constructor(props:IProps) {
     super(props);
     this.state = {
-        isLoaded: null,
+        isLoaded: false,
         items: null,
         isChecked: true,
+        error: null,
     };
   }
 
-  checkedHandler = (checkBoxState) => {
+  checkedHandler = (checkBoxState: boolean) => {
     console.log('checkBoxState = ', checkBoxState);
-    this.setState((state)=>({isChecked: !state.isChecked}))
+    this.setState((prevstate)=>({isChecked: !prevstate.isChecked}))
   }
 
-  searchHandler = (searchQuery) => {
+  searchHandler = (searchQuery: string) => {
     fetch(`${getMoviesUrl}?api_key=${apiKey}&language=${language}&query=${searchQuery}`)
     .then(res => res.json())
     .then(
