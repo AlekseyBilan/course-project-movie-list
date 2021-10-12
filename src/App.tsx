@@ -9,6 +9,8 @@ import NotFound from './components/NotFound/NotFound';
 import UseState from './components/Hooks/UseState';
 import Search from './components/Search/Search';
 import {apiKey, getMoviesUrl, language} from './AppSettings';
+import UseEffect from './components/Hooks/UseEffect';
+import UseRef from './components/Hooks/UseRef';
 
 interface IProps {
 }
@@ -71,8 +73,14 @@ class App extends React.Component<IProps, IState> {
           <Search searchHandler={this.searchHandler}/>
             <MovieList props={this.state.items}/>
           </Route>
-          <Route path='/hooks'>
+          <Route path='/usestate'>
             <UseState/>
+          </Route>
+          <Route path='/useeffect'>
+            <UseEffect/>
+          </Route>
+          <Route path='/useref'>
+            <UseRef/>
           </Route>
           <Route path='/checkbox'>
             <Title titleText={'Welcome on Checbox example'} />

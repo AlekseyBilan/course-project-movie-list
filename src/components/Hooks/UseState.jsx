@@ -31,8 +31,9 @@ function UseState() {
 
     return (
     <>
-        {state}<br/>
-        {obj.title}
+        <h1>useState example</h1>
+        <b>{state}</b><br/>
+        {obj.title}<br/>    
         <Button onClick={increment} text={'Plus +'} />
         <Button onClick={increment10} text={'Plus 10 +'} />
         <Button onClick={decrement} text={'Minus 1 -'} />

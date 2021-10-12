@@ -2,7 +2,6 @@ import React from 'react';
 import Movie from "../Movie/Movie";
 
 function MovieList({props}) {
-  console.log('props', props);
   const movies = props?.results;
   let result = 'Type search request, to find some movie';
   if(movies && movies.length) {
