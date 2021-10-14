@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import * as React from 'react';
 import Title from './components/Title/Title';
 import MovieList from './components/MovieList/MovieList';
@@ -34,7 +34,7 @@ class App extends React.Component<IProps, IState> {
   }
 
   checkedHandler = (checkBoxState: boolean) => {
-    console.log('checkBoxState = ', checkBoxState);
+
     this.setState((prevstate)=>({isChecked: !prevstate.isChecked}))
   }
 
@@ -43,7 +43,6 @@ class App extends React.Component<IProps, IState> {
     .then(res => res.json())
     .then(
       (result) => {
-        console.log('result = ', result);
         this.setState({
           isLoaded: true,
           items: result
@@ -59,7 +58,6 @@ class App extends React.Component<IProps, IState> {
   }
 
   render() {
-    console.log('App rendered');
     return (  
       <Router>
         <Switch>

@@ -1,6 +1,10 @@
 import React from 'react';
 import Movie from "../Movie/Movie";
 
+const styles = {
+  textAlign: 'center',
+}
+
 function MovieList({props}) {
   const movies = props?.results;
   let result = 'Type search request, to find some movie';
@@ -12,7 +16,7 @@ function MovieList({props}) {
     result = 'not found';
   }
   return (
-    <div className="MovieList">
+    <div className="MovieList" style={styles}>
         { result }
     </div>
   );

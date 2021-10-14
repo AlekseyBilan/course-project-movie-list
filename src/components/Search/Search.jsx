@@ -1,5 +1,28 @@
 import React, {useState} from 'react';
 import Button from '../Button/Button';
+import './Search.scss';
+import styled from "styled-components";
+
+const Input = styled.input`
+    color: palevioletred;
+    font-size: 20px;
+    margin: 10px;
+    padding: 5px 20px;
+    border: 2px solid palevioletred;
+    border-radius: 3px;
+
+    ::before {
+        content: "🚀";
+    }
+    
+    :hover {
+        color: red;
+    }
+
+    ::placeholder {
+        color: goldenrod;
+    }
+`;
 
 function Search (props) {
     const [searchQuery, SetSearchQuery] = useState(null);
@@ -18,7 +41,7 @@ function Search (props) {
 
     return (
         <div className='search-container'>
-            <input 
+            <Input
                 className="search-query"
                 type="text"
                 placeholder="Type search query here, to get results"

@@ -13,7 +13,6 @@ const clickHandler = (e) => {
 }
 
   useEffect(() => {
-    console.log('useEffect type is = ', type);
     fetch(`https://jsonplaceholder.typicode.com/${type}`)
       .then(response => response.json())
       .then(json => console.log(json))
@@ -24,8 +23,6 @@ const clickHandler = (e) => {
   }, [type])
 
   useEffect(() => {
-    console.log('ComponentDidMount')
-
     window.addEventListener('click', clickHandler);
 
     return () => {
@@ -34,7 +31,7 @@ const clickHandler = (e) => {
   }, [])
 
   useEffect(() => {
-    console.log('useEffect like ComponentDidMount lifecicle method');
+    //console.log('useEffect like ComponentDidMount lifecicle method');
     fetch('https://jsonplaceholder.typicode.com/todos/')
         .then(response => response.json())
         .then(json => setData(json))

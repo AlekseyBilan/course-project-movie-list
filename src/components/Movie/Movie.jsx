@@ -1,6 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
+import styled from "styled-components";
+
+const StyledLink = styled(Link)`
+  color: palevioletred;
+  font-weight: bold;
+`;
 
 function Movie({movie}) {
   let title = movie.title.replace(/ /g, '-')
@@ -22,6 +28,7 @@ function Movie({movie}) {
           <a target="_blank" href={'https://www.themoviedb.org/movie/'+ movie.id +'-'+ title } rel="noreferrer">go to A</a>
           <br/>
           <Link to={{ pathname: 'https://www.themoviedb.org/movie/'+ movie.id +'-'+ title }} target="_blank">go to { movie.title}</Link>
+          <StyledLink to={{ pathname: 'https://www.themoviedb.org/movie/'+ movie.id +'-'+ title }} target="_blank">go to { movie.title}</StyledLink>
       </section>
   )
 }
