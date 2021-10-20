@@ -8,7 +8,6 @@ import { Switch, Route, BrowserRouter as Router, Link } from 'react-router-dom';
 import NotFound from './components/NotFound/NotFound';
 import UseState from './components/Hooks/UseState';
 import Search from './components/Search/Search';
-import {apiKey, getMoviesUrl, language} from './AppSettings';
 import UseEffect from './components/Hooks/UseEffect';
 import UseRef from './components/Hooks/UseRef';
 
@@ -34,12 +33,11 @@ class App extends React.Component<IProps, IState> {
   }
 
   checkedHandler = (checkBoxState: boolean) => {
-
     this.setState((prevstate)=>({isChecked: !prevstate.isChecked}))
   }
 
-  searchHandler = (searchQuery: string) => {
-    fetch(`${getMoviesUrl}?api_key=${apiKey}&language=${language}&query=${searchQuery}`)
+  searchHandler = (searchQuery: string) => {//REACT_APP_MOVIE_URL
+    fetch(`${process.env.REACT_APP_MOVIE_URL}?api_key=${process.env.REACT_APP_API_KEY}&language=${process.env.REACT_APP_LANGUAGE}&query=${searchQuery}&sort_by=popularity.asc`)
     .then(res => res.json())
     .then(
       (result) => {
@@ -88,6 +86,7 @@ class App extends React.Component<IProps, IState> {
           <Route path='/'>
             <Title titleText={'Welcome on blblabla'} />
             <Link to='/home'>go home</Link>
+            <br/>
             <Link to='/checkbox'>go checkbox</Link>
           </Route>
           <Route path='*' component={NotFound}/>

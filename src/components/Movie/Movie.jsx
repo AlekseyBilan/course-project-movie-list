@@ -2,20 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import styled from "styled-components";
+import './styles.scss';
 
 const StyledLink = styled(Link)`
   color: palevioletred;
   font-weight: bold;
+  align-self: flex-end;
 `;
 
 function Movie({movie}) {
-  let title = movie.title.replace(/ /g, '-')
+  const title = movie.title.replace(/ /g, '-');
+  const src = movie.poster_path ? process.env.REACT_APP_IMG_PATH + movie.poster_path : 'https://via.placeholder.com/600/771796';
+  
   return(
-    <section className="movie-list" data-id={movie.id}>
+    <section className="movie-wrap" data-id={movie.id}>
           <div className="image-wrapper">
             <img 
                 className="movie-icon" 
-                src={'https://image.tmdb.org/t/p/w500'+movie.poster_path}
+                src={src}
                 alt={movie.title}
             />
           </div>
@@ -25,10 +29,7 @@ function Movie({movie}) {
                   {movie.overview}
               </span>
           </div>
-          <a target="_blank" href={'https://www.themoviedb.org/movie/'+ movie.id +'-'+ title } rel="noreferrer">go to A</a>
-          <br/>
-          <Link to={{ pathname: 'https://www.themoviedb.org/movie/'+ movie.id +'-'+ title }} target="_blank">go to { movie.title}</Link>
-          <StyledLink to={{ pathname: 'https://www.themoviedb.org/movie/'+ movie.id +'-'+ title }} target="_blank">go to { movie.title}</StyledLink>
+          <StyledLink to={{ pathname: 'https://www.themoviedb.org/movie/'+ movie.id +'-'+ title }} target="_blank">Read more abaut movie at themoviedb.org </StyledLink>
       </section>
   )
 }
