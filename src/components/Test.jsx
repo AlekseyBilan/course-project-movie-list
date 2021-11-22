@@ -1,12 +1,9 @@
-import React, {useRef} from 'react';
+import React from 'react';
 
-function Test() {
-    const title = useRef(null);
+export default function Test() {
     return (
-        <h2 ref={title} onClick={()=>{console.log('TC = ', title?.current)}}>
-            {'test test test'}
-        </h2>
+        <svg id="icon-sort-ascending" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24" xmlXpace="preserve">
+            <circle cx="10" cy="10" r="10" />
+        </svg>
     );
 }
-  
-export default Test;
