@@ -6,12 +6,12 @@ const styles = {
 };
 
 const moviesContainer = {
-    display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    alignContent: 'center',
-    justifyContent: 'flex-start',
-    alignItems: 'stretch',
+  display: "flex",
+  flexDirection: "row",
+  flexWrap: "wrap",
+  alignContent: "center",
+  justifyContent: "flex-start",
+  alignItems: "stretch",
 };
 
 function MovieList({ movies }) {
@@ -25,9 +25,9 @@ function MovieList({ movies }) {
   }
   return (
     <div className="MovieList" style={styles}>
-       <section className="movies-container" style={moviesContainer}>
-         {result}
-       </section>
+      <section className="movies-container" style={moviesContainer}>
+        {result}
+      </section>
     </div>
   );
 }
