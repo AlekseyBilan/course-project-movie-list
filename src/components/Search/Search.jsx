@@ -41,6 +41,7 @@ function Search (props) {
 
     return (
         <div className='search-container'>
+            <h3>Search section:</h3>
             <Input
                 className="search-query"
                 type="text"

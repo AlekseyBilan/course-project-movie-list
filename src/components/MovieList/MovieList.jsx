@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import Movie from "../Movie/Movie";
 
 const styles = {
@@ -14,41 +14,9 @@ const moviesContainer = {
     alignItems: 'stretch',
 };
 
-const sortSectionStyles = {
-    display: 'flex',
-    flexWrap: 'nowrap',
-    alignContent: 'center',
-    justifyContent: 'center',
-    alignItems: 'center',
-};
-
-function MovieList({ props }) {
-  const [movies, SetMovies] = useState([]);
-  const [checked, SetChecked] = useState(false);
-
-  const sortAsc = (b, a) => a.popularity - b.popularity;
-  const sortDesc = (a, b) => a.popularity - b.popularity;
-
-  const onChangeHandler = (e) => {
-    SetChecked(e.target.checked);
-  }
-
-  useEffect(() => {
-    if(checked){
-      SetMovies([...movies].sort(sortDesc));
-    } else {
-      SetMovies([...movies].sort(sortAsc));
-    }
-  }, [checked]);
-
-  useEffect(() => {
-    SetMovies(props?.results);
-  }, [props]);
-
+function MovieList({ movies }) {
   let result = "Type search request, to find some movie";
-  let disabled = true;
   if (movies) {
-    disabled = false;
     result = movies.map((movie, index) =>
       movie.title ? <Movie movie={movie} key={index} /> : null
     );
@@ -57,20 +25,6 @@ function MovieList({ props }) {
   }
   return (
     <div className="MovieList" style={styles}>
-      {movies ?
-      <section style={sortSectionStyles}>
-        <h3>Sort section:</h3>
-        <label>
-          <input 
-            type="checkbox"
-            onChange={onChangeHandler}
-            checked={checked}
-            disabled={disabled}
-          />
-          Popularity { checked ? 'descending' : 'ascending'}
-        </label>
-        </section>
-       : ''}
        <section className="movies-container" style={moviesContainer}>
          {result}
        </section>
