@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import MovieList from "../MovieList/MovieList";
 import iconsSort from "../../images/icons/iconsSort.svg";
+import './Sort.scss';
 
 const sortSectionStyles = {
   display: "flex",
@@ -36,7 +37,7 @@ const Sort = ({ items }) => {
   return (
     <>
       {movies ? (
-        <section style={sortSectionStyles}>
+        <section style={sortSectionStyles} className="SortComponent">
           <h3>Sort section:</h3>
           <label className="popularity-wrap">
             <input

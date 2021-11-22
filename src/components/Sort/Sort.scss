@@ -1,0 +1,12 @@
+.SortComponent {
+    label.popularity-wrap {
+        display: flex;
+        align-content: center;
+        align-items: center;
+        cursor: pointer;
+        & > svg {
+            margin: 0 10px;
+        }
+    }
+}
+
